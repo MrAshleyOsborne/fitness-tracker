@@ -85,6 +85,6 @@ The design is simple on purpose — I focused on making it easy to use.
 
 Below is the wireframe I created to help design the layout:
 
-![Wireframe of app layout](images/wireframe.png)
+![Wireframe](fitness-image.png)
 
 
