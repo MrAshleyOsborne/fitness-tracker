@@ -14,40 +14,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderLog() {
     logList.innerHTML = "";
+
+    if (workouts.length === 0) {
+      logList.innerHTML = "<li>No workouts yet.</li>";
+      return;
+    }
+
     workouts
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .forEach((workout, index) => {
         const li = document.createElement("li");
         li.innerHTML = `
-          <strong>${workout.date}:</strong> ${workout.activity} - ${workout.duration} mins, ${workout.calories} cal
+          <strong>${workout.date}:</strong> ${workout.activity} – 
+          ${workout.duration} mins, ${workout.calories} cal
           <button onclick="deleteWorkout(${index})">Delete</button>
         `;
         logList.appendChild(li);
       });
   }
 
-  window.deleteWorkout = function(index) {
+  window.deleteWorkout = function (index) {
     workouts.splice(index, 1);
     saveWorkouts();
     renderLog();
-  }
+  };
 
-  form.addEventListener("submit", e => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
+
     const activity = document.getElementById("activity").value.trim();
     const duration = parseInt(document.getElementById("duration").value);
     const calories = parseInt(document.getElementById("calories").value);
     const date = document.getElementById("date").value;
 
-    if (!activity || duration <= 0 || calories <= 0 || !date) {
-      alert("Please fill out all fields correctly.");
+    if (!activity || isNaN(duration) || isNaN(calories) || !date) {
+      alert("Please fill in all fields correctly.");
       return;
     }
 
     workouts.push({ activity, duration, calories, date });
     saveWorkouts();
     form.reset();
-    alert("Workout added!");
+    renderLog();
+    logSection.style.display = "block";
+    addSection.style.display = "none";
   });
 
   addTab.addEventListener("click", () => {
@@ -61,6 +71,5 @@ document.addEventListener("DOMContentLoaded", () => {
     renderLog();
   });
 
-  // Default view
   renderLog();
 });
