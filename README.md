@@ -60,7 +60,7 @@ i made it all using xcode then copied it across to vs code
 ## Live Version
 
 You can try it here:  
-**https://MrAshleyOsborne.github.io/fitness-tracker/**  
+**https://MrAshleyOsborne.github.io/fitness-tracker2/**  
 __
 
 ---
@@ -85,6 +85,7 @@ The design is simple on purpose — I focused on making it easy to use.
 
 Below is the wireframe I created to help design the layout:
 
-![Wireframe](fitness-image.png)
-
+<p align="center">
+  <img src="fitness-image.png" alt="Fitness Tracker Preview" width="400"/>
+</p>
 
